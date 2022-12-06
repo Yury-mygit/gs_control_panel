@@ -1,0 +1,16 @@
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    // padding: 5px;
+    
+    // min-width: 1000px;
+    flex-grow: 1;
+
+    
+
+    input{
+        
+        flex-shrink: 1;
+        // width: 30%;
+    }
+}

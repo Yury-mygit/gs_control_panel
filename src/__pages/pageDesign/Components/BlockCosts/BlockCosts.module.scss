@@ -1,0 +1,71 @@
+$contentWidth: 1000px;
+
+.wrapper{
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin: 0px 0px 50px 0px;
+
+   >h2{
+    margin: 0px 0px 30px 0px;
+   }
+
+    font-size: 20px;
+
+    >div,p{
+        width: $contentWidth;
+        margin: 0px 0px 30px 0px;
+    }
+
+    .blocksList{
+        
+        display: flex;
+        justify-content: space-between;
+        width: 1200px;
+
+    .blockCard {
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        width: 300px;
+        border: 1px solid black;
+        padding: 20px;
+
+        >h3{
+            font-size: 30px;
+            margin: 0px 0px 20px 0px;
+        }
+
+        .block__imgWrapper{
+            display: flex;
+            width: 100px;
+            height: 100px;
+            overflow: hidden;
+            flex-shrink: 0;
+            border-radius: 50%;
+            
+            flex-grow: 0;
+    
+            justify-content: center;
+            align-items: center;
+    
+            margin: 0px 0px 20px 0px;
+    
+            img{
+                width: 250px;
+                flex-shrink: 0;
+    
+               
+            }
+        }
+    }
+    
+    }
+
+
+}
