@@ -1,46 +1,61 @@
-import React, { useContext } from 'react';
-import settings from '../../../settings';
+import React, { useContext, useState } from 'react';
+import settings from '../../../../settings';
+import cl from "./BlockFixed.module.scss"
 
 const BlockFixed = ({data}) => {
-    return (
-        <div 
-            style={{backgroundImage: `url(${settings.server}image/${data.fon})`, ...styles.wrapper}}                                       
-         >   
-            <div style = {{...styles.titleBlock}}>
-                <h1 style ={{...styles.title}}> 
-                    
-                    <p style = {{color: 'rgb(216, 138, 13)',}}>{data.title}</p> 
-                    <p>{data.motto}</p>
-                    
-                </h1>
 
-                <div style={{...styles.moto}}> 
-                    {data.text}
-                </div>
-            </div> 
-                                            
-        </div>
-        
-    );
+    const [edit, setEdit] = useState(false)
+    const [moto, setMoto] = useState(data.motto)
+    const [text, setText] = useState(data.text)
+
+    let back = `url(${settings.imageServer}image/${data.fon})`
+
+
+    // console.log(data)          
+    
+
+   
+    return  <div style={{backgroundImage: back}} className = {cl.wrapper}> 
+
+    <button onClick={()=>setEdit(!edit)}>Редактировать</button>
+
+        <div className={cl.titleBlock}>
+            <h1 className={cl.title}>                       
+                <p style = {{color: 'rgb(216, 138, 13)',}}>{data.title}</p> 
+                
+                {edit 
+                ? <input  
+                    value = {moto} 
+                    onChange = {(e)=>setMoto(e.target.value)}/>
+                : <p>{moto}</p>
+                }
+
+            </h1>
+            <div className={cl.moto}> 
+
+                {edit 
+                ? <input 
+                    value = {text} 
+                    onChange = {(e)=>setText(e.target.value)} 
+                    className = {cl.textInput}
+                  />
+                : <p>{text}</p>
+                }
+
+
+            </div>
+        </div>                                           
+    </div>
+       
+    
+      
 };
 
 
 const styles = {
-    wrapper:{ 
-        height:'568px',
-        width: '100%',
-        backgroundSize: "cover",
-        backgroundSize: "100% auto",
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: "50% 50%",
-        backgroundAttachment: 'fixed',
-        padding:'10px 10px 10px 10px',
-        overflow:'hidden',
-        display:'flex',
-        flexDirection:'column',
-        alignItems:'center',
-    },
+    
     titleBlock:{
+        contenteditable:"true ",
         paddingTop:'100px',
     },
     title: {
@@ -52,6 +67,7 @@ const styles = {
         marginBottom:'80px',
     },
     moto:{
+        contentEditable:"true ",
         fontSize:'35px'
     }
     

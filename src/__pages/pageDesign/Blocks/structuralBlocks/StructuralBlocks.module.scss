@@ -1,0 +1,29 @@
+.wrapper{
+    top: 0px;
+    left: 0px;
+    position: absolute;
+    // background-color: rgb(223, 229, 233);
+    // border: 1px solid red;
+    min-height: 300px;
+    min-width: 150px;
+    z-index: 25;
+
+    
+
+    .block{
+        margin-bottom: 20px;
+        height: 50px;
+        border: 5px solid blue;
+        border-radius: 10px;
+        margin-left: 90px;
+        
+        display: flex;
+        flex-direction: column;
+        // justify-content: center;
+        align-items: center;
+
+        box-shadow: 10px 5px 5px  2px gray;
+        background-color: white;
+    }
+}
+

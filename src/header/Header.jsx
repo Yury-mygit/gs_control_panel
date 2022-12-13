@@ -3,7 +3,7 @@ import cl from './Header.module.scss'
 import { Link } from "react-router-dom";
 
 import {useSelector, useDispatch} from 'react-redux'
-import { logIn, logOut } from './store/userSlice';
+import { logIn, logOut } from '../store/userSlice';
 
 const Header = () => {
 
@@ -25,11 +25,9 @@ const Header = () => {
                 <div className={cl.item}>
                     <Link to="/design">Дезаин</Link>
                 </div>
+               
                 <div className={cl.item}>
-                    <Link to="/content">Материалы</Link>
-                </div>
-                <div className={cl.item}>
-                    <Link to="/dashboard">Расписание</Link>
+                    <Link to="/timetable">Расписание</Link>
                 </div>
                 <div className={cl.item}>
                     <Link to="/cms">CMS</Link>

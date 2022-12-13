@@ -6,6 +6,8 @@ import { useState, useRef } from 'react';
 
 import { useGetPageDataQuery } from '../../API/pageAPI';
 
+import PagesList from './components/PagesList';
+
 
 
 // console.log('move = ', parseInt(cl.move))
@@ -21,17 +23,26 @@ const Home = () => {
 
     const { data, isError, isLoading, isFetching } = useGetPageDataQuery (10001)
 
-    
-    
-    
-
-    return (
+    // console.log(data)
+    // console.log(isError)
+    if (!isLoading && !isError)
+    { return (
         <div className={cl.content}>
 
             
+            <div className={cl.structure}>
+                Структура проекта
+                <PagesList data={data}/>
+            </div>
+            <div className={cl.summary}>
+                Сводная по оплате
+            </div>
+            
         
         </div>      
-    );
+    )}
+    if (isLoading && !isError) return <div className={cl.content}>Loading...</div>;
+    if (!isLoading && isError) return <div className={cl.content}>Ошибка загрузка</div>;
 };
 
 export default Home;

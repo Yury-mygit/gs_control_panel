@@ -1,22 +1,71 @@
-.content{
+.wrapper{
     display:flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-
-    
+    padding: 0px;
+    flex-wrap: nowrap;
     flex-grow: 1;
+   
 
+    @mixin reset-list {
+        display: grid;
+        grid-template-columns: repeat(10, 1fr);
+        grid-column-gap: 10px;
+        grid-row-gap: 1em;
+        >div
+        {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 20px;
+            margin: 0px 0px 10px 0px ;
+        }
+        
+    }
+
+    .menu__wrapper{
+        height: 20px; 
+        width: 100%;
+        background-color: aliceblue;
+        padding: 0px 20px;
+        display: flex;
+        flex-direction: row-reverse;
+        // justify-content: space-between;
+        // align-items: flex-end;
+        margin-bottom: 10px;
+        button{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+     }
     
 
-    .view{
-        width: 300px;
-        height: 300px;
-        display:flex;
-        flex-direction: column;
-        justify-content: center;
+    .header{
+        width: 100%;       
         align-items: center;
+        font-weight: 300;
+        font-size: medium;
+        margin: 0px 0px 20px 0px;
+        @include reset-list;
+        
+    }  
 
-        border: 1px solid red;
+
+    .table{
+        width: 100%; 
+        border-bottom: 3px solid red;
     }
+
+    .item{
+        width: 100%;       
+        align-items: center;
+        
+       
+        @include reset-list;
+        
+    }
+   
 }

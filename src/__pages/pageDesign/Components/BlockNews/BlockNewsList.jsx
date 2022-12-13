@@ -1,26 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
+import cl from './BlockNewsList.module.scss'
+import { useGetNewsBlockDataQuery } from '../../../../API/pageAPI';
 
 const BlockNews = () => {
     
-    if (news && news.length) inner = news.map((item, index)=>{
-        return (
-            <div 
-                key={index} 
-                className={cl.news_wrapper}
-            > 
-                <div className={cl.news__title_content}>
-                    <p>title:</p>
-                    <h3 className={cl.news__title_text}>  
-                        {item.title} 
-                    </h3>
-                    
+    const [newsCount, setNewsCount] = useState(5)
+    
+    const { data = [], isError, isLoading, isFetching } = useGetNewsBlockDataQuery()
+
+    if (isError) return <div>An error has occurred!</div>
+    if (isLoading) return <div>Загрузка..</div>
+    
+    let inner = data.map((item, index)=>
+        {
+            return (
+                <div 
+                    key={index} 
+                    className={cl.news_wrapper}
+                > 
+                    <div className={cl.news__title_content}>
+                        <p>title:</p>
+                        <h3 className={cl.news__title_text}>  
+                            {item.title} 
+                        </h3>
+                        
+                    </div>
+                    <div className={cl.news__body}>           
+                        {item.body}               
+                    </div>
                 </div>
-                <div className={cl.news__body}>           
-                       {item.body}               
-                </div>
-            </div>
-        )
-    })
+            )
+        })
 
 
     return (  

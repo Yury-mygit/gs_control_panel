@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import {Outlet} from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
-import { setUpUser, defuser } from './store/controllerSlice';
-import { decrement, increment } from './store/counterSlice'
+import { setUpUser, defuser } from '../store/controllerSlice';
+import { decrement, increment } from '../store/counterSlice'
 
-import Header from './Header';
-import Footer from './Footer';
-import { logIn } from './store/userSlice';
+import Header from '../header/Header';
+import Footer from '../footer/Footer';
+import { logIn } from '../store/userSlice';
 
 import cl from './Root.module.scss'
 

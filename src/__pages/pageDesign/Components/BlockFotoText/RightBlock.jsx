@@ -1,20 +1,22 @@
 import React from 'react';
-import settings from '../../../settings';
-import StButton from '../../common/StButton';
+import settings from '../../../../settings';
+import StButton from '../common/StButton';
 
 
 
 const RightBlock = ({cl, data}) => {
 
+
+
     let text = 
             <div className={cl.textComponent}>
-                <h2>{data.text.title}</h2>
+                <h2>{data.text_title}</h2>
                 <p>
-                    {data.text.text}
+                    {data.text_text}
                 </p>
                 <StButton 
-                    text={data.text.linkTitle}
-                    link={data.text.link}
+                    text={data.text_link_title}
+                    link={data.text_link}
                 />
             </div>
        
@@ -22,11 +24,11 @@ const RightBlock = ({cl, data}) => {
     const image = 
             <div className={cl.picComponent}>
                 <img 
-                    src={`${settings.server}image/${data.img.url}`} 
+                    src={`${settings.imageServer}image/${data.img_url}`} 
                 />
             </div>   
     
-    if (data.position == 'right'){
+    if (data.Position == 'right'){
         return   (
                 <div className={cl.components}> 
                         {text}

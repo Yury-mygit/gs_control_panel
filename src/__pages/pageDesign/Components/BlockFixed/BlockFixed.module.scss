@@ -1,0 +1,42 @@
+.wrapper{ 
+    height: 700px;
+    width: 100%;
+    background-size: cover;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-attachment: fixed;
+    padding: 10px 10px 10px 10px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+
+    .titleBlock{
+        padding-top:100px;
+    }
+
+    .textInput{
+        width: auto;
+        max-width: 100%;
+        
+    }
+
+    .title {
+        display:  flex;
+        flex-direction: column;
+        align-items: center;
+        font-weight: 600;
+        font-size: 60px;
+        margin-bottom: 80px;
+    }
+
+    .moto{
+        
+        font-size: 35px;
+    }
+
+
+
+}

@@ -4,8 +4,6 @@ import InnerBlock from './InnerBlock';
 
 const BlockBenefits = ({data}) => {
 
-    
-
     return (
         <div className={cl.wrapper}>
             <h2> Почему выбирают нас? </h2>

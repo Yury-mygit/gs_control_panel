@@ -1,5 +1,5 @@
 import React from 'react';
-import cl from '../../../pages/contacts/Contacts.module.scss'
+import cl from './Contacts.module.scss'
 
 const Contacts = ({data}) => {
     return (

@@ -1,6 +1,7 @@
 import React from 'react';
+import cl from './style.module.scss'
 
-const Contact = () => {
+const BlockPay = () => {
     return (
         <div>
             
@@ -8,4 +9,4 @@ const Contact = () => {
     );
 };
 
-export default Contact;
+export default BlockPay;

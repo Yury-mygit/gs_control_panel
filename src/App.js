@@ -1,5 +1,4 @@
 import './App.css';
-import { createRoot } from "react-dom/client";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -9,14 +8,11 @@ import {
   redirect,
   useNavigate, 
 } from "react-router-dom";
-
 import ErrorPage from './__pages/ErrorPage';
-
-import Root from './Root';
-import Contact from './__pages/Contact';
+import Root from './router/Root';
 import Dashboard from './__pages/Dashboard';
-import AuthLayout from './__pages/AuthLayout';
-import Login from './Login';
+import AuthLayout from './__pages/pageAuth/AuthLayout';
+import Login from './__pages/pageAuth/Login';
 import Home from './__pages/pageHome/Home';
 import Design from './__pages/pageDesign/Design'
 import CMS from './__pages/pageCMS/CMS'
@@ -24,6 +20,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import PageLogin from './__pages/pageLogin/PageLogin';
 import { useEffect } from 'react';
 import {logIn} from './store/userSlice'
+import Timetable from './__pages/timetable/Timetable';
 
 
 
@@ -47,39 +44,6 @@ function App() {
     }
   },[])
  
- 
-
-  
-// const router = createBrowserRouter(
-//   createRoutesFromElements(
-//     <Route 
-//       path="/" 
-//       element={<Root />}>
-//       <Route 
-//         path="home"
-//         element={<div></div>} 
-//         loader={loader}
-        
-//       />
-//       <Route path="contact" element={<Contact />} />
-//       <Route
-//         path="dashboard"
-//         element={<Dashboard />}
-//       />
-//       <Route element={<AuthLayout />}>
-//         <Route
-//           path="login"
-//           element={<Login />}
-          
-//         />
-//         <Route path="logout" />
-//       </Route>
-
-      
-      
-//     </Route>
-//   )
-// );
 const NavToMain = () =>{
 
   const navigate = useNavigate();
@@ -117,8 +81,9 @@ const router = createBrowserRouter(
       // action={rootAction}
       errorElement={<ErrorPage />}
     >
-      {/* <Route index element={<Home />} /> */}
-      <Route index element={<Design />} />
+      <Route index element={<Home />} />
+      {/* <Route index element={<CMS />} /> */}
+      {/* <Route index element={<Design />} /> */}
       <Route errorElement={<ErrorPage />}>
         <Route
           path="design"
@@ -126,15 +91,10 @@ const router = createBrowserRouter(
           // loader={contactLoader}
           // action={contactAction}
         />
+
         <Route
-          path="content"
-          element={<Contact />}
-          // loader={contactLoader}
-          // action={contactAction}
-        />
-        <Route
-          path="dashboard"
-          element={<Dashboard />}
+          path="timetable"
+          element={<Timetable />}
           // loader={contactLoader}
           // action={editAction}
         />
@@ -143,6 +103,7 @@ const router = createBrowserRouter(
           element={<CMS />}
           // action={destroyAction}
         />
+       
       </Route>
     </Route>
   )

@@ -3,6 +3,7 @@ import BlockCard from './BlockCard';
 import cl from './BlockCosts.module.scss'
 
 const BlockCosts = ({data}) => {
+    // console.log(data)
     return (
         <div className={cl.wrapper}>
         
@@ -15,7 +16,7 @@ const BlockCosts = ({data}) => {
             
             <div className={cl.blocksList}>
                 {data.layers.map((item)=>{
-                    return <BlockCard key={item.layerId} cl={cl} data={item}/>
+                    return <BlockCard key={item.id} cl={cl} data={item}/>
                 })}
                
             </div>

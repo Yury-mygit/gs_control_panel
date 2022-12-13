@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Content = () => {
+const BlockAbout = () => {
     return (
         <div>
-            Content
+            
         </div>
     );
 };
 
-export default Content;
+export default BlockAbout;
