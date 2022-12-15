@@ -1,0 +1,16 @@
+.wrapper{
+    margin-bottom: 30px;
+    .controls{
+        height: 30px;
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        width: 100%;
+    }
+    .editButton{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+}

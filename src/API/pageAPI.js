@@ -19,9 +19,42 @@ export const pageApi = createApi({
       }),
       getNewsBlockData: builder.query({
         // query: ({start, limit = ''}) => `posts?_start=${start}&_limit=${limit}`,
-        query: () => `news`,
+        query: (limit='', skip = 0) => `news?${limit && `_limit=${limit}`}`,
       }),
+
+
+      addNews: builder.mutation({
+        query(body) {
+          return {
+            url: `addnews`,
+            method: 'POST',
+            body,
+          }
+        },
+        // Invalidates all Post-type queries providing the `LIST` id - after all, depending of the sort order,
+        // that newly created post could show up in any lists.
+        // invalidatesTags: [{ type: 'Posts', id: 'LIST' }],
+      }),
+
+      updateNews: builder.mutation({
+        query(body) {
+          return {
+            url: `updatenews`,
+            method: 'POST',
+            body,
+          }
+        },
+        // Invalidates all Post-type queries providing the `LIST` id - after all, depending of the sort order,
+        // that newly created post could show up in any lists.
+        // invalidatesTags: [{ type: 'Posts', id: 'LIST' }],
+      }),
+
     }),
+
+
+    
+
+
   })
 
   export const {
@@ -29,4 +62,6 @@ export const pageApi = createApi({
     useGetTaskPageDataQuery, 
     useGetOnePageDataQuery,
     useGetNewsBlockDataQuery,
+    useAddNewsMutation,
+    useUpdateNewsMutation,
   } = pageApi

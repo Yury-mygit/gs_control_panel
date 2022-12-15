@@ -10,7 +10,6 @@ import {
 } from "react-router-dom";
 import ErrorPage from './__pages/ErrorPage';
 import Root from './router/Root';
-import Dashboard from './__pages/Dashboard';
 import AuthLayout from './__pages/pageAuth/AuthLayout';
 import Login from './__pages/pageAuth/Login';
 import Home from './__pages/pageHome/Home';
@@ -81,9 +80,9 @@ const router = createBrowserRouter(
       // action={rootAction}
       errorElement={<ErrorPage />}
     >
-      <Route index element={<Home />} />
+      {/* <Route index element={<Home />} /> */}
       {/* <Route index element={<CMS />} /> */}
-      {/* <Route index element={<Design />} /> */}
+      <Route index element={<Design />} />
       <Route errorElement={<ErrorPage />}>
         <Route
           path="design"
