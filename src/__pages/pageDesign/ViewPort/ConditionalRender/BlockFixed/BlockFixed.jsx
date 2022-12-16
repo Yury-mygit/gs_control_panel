@@ -4,6 +4,7 @@ import cl from "./BlockFixed.module.scss"
 
 const BlockFixed = ({data}) => {
 
+
     const [edit, setEdit] = useState(false)
     const [moto, setMoto] = useState(data.motto)
     const [text, setText] = useState(data.text)

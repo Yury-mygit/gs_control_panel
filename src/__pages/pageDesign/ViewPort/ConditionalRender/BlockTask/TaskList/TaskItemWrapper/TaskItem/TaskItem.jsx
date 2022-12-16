@@ -1,12 +1,8 @@
 import React, { useState } from 'react';
-import cl from '../../Styles/Tasks.module.scss'
-import settings from '../../../../../../../settings';
+import cl from './TaskItem.module.scss'
+import settings from '../../../../../../../../settings';
 
-const TaskView = ({id, desk, image, imageExt, setTask}) => {
-
-    
-
-    
+const TaskItem = ({id, desk, image, imageExt, setTask}) => {
 
     return (
         <div 
@@ -20,7 +16,7 @@ const TaskView = ({id, desk, image, imageExt, setTask}) => {
     );
 };
 
-export default TaskView;
+export default TaskItem;
 
 const TaskViewPort = () => {
     return (

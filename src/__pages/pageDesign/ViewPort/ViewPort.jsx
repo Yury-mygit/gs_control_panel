@@ -14,6 +14,9 @@ const ViewPort = ({ currentPage, input, setInput }) => {
     if (isError) return <div>An error has occurred!</div>
     if (isLoading) return <div>Загрузка</div>
 
+
+    // console.log(data)
+
     return (
         <div className={cl.viewPort}>
             {data.structural_blocks.map((i)=>{
@@ -26,6 +29,7 @@ const ViewPort = ({ currentPage, input, setInput }) => {
                     />
                     <ConditionalRender 
                         type={i.type} 
+                        block_type={i.block_type} 
                         data={i.data}
                     />
                 </div>

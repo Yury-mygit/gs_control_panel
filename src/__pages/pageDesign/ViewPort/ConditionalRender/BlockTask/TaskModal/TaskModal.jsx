@@ -1,5 +1,5 @@
 import React from 'react';
-import cl from '../Styles/Tasks.module.scss'
+import cl from './TaskModal.module.scss'
 import { useState } from 'react';
 import settings from '../../../../../../settings';
 
@@ -8,7 +8,10 @@ let random = -1
 
 const TaskModal = ({taskModal, setTask, data}) => {
 
-    console.log(data)
+
+    if (taskModal<0) return ''
+
+    // console.log(data)
 
     const [answerGiven, setAnswerGiven] = useState(false)
     const [answerCorrect, setAnswerCorrect] = useState(false)
@@ -33,10 +36,11 @@ const TaskModal = ({taskModal, setTask, data}) => {
 
     
 
-    console.log(mergedClassName)
+    // console.log(mergedClassName)
+
     return (
         <div 
-            className={cl.modal__wrapper}
+            className={cl.wrapper}
             onClick={ (e)=>{e.stopPropagation(); setTask(-1); random=-1 }}
         >
             <div 

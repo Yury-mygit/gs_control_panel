@@ -1,9 +1,9 @@
 import React from 'react';
-import cl from '../../Styles/Tasks.module.scss'
+import cl from './TaskMenu.module.scss'
 
 const TaskMenu = ({typeList}) => {
     return (
-        <div className={cl.taskmenu__wrapper}>
+        <div className={cl.wrapper}>
             <h3>Типы задач</h3>
             <ul>
                 <li>Исключить лишнее</li>
