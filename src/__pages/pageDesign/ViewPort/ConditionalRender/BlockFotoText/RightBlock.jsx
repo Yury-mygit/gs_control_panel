@@ -1,5 +1,5 @@
 import React from 'react';
-import settings from '../../../../../settings';
+import settings from '../../../../../common/settings';
 import StButton from '../common/StButton';
 
 

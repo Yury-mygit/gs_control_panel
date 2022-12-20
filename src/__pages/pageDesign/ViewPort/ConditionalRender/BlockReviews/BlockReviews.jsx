@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import settings from '../../../../../settings';
+import settings from '../../../../../common/settings';
 import cl from './blockReviews.module.scss'
 
 const BlockReviews = ({data}) => {

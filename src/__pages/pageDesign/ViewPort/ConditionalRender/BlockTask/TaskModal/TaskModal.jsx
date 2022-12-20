@@ -1,7 +1,7 @@
 import React from 'react';
 import cl from './TaskModal.module.scss'
 import { useState } from 'react';
-import settings from '../../../../../../settings';
+import settings from '../../../../../../common/settings';
 
 
 let random = -1

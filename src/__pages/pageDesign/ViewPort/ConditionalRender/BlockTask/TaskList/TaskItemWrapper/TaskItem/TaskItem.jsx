@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import cl from './TaskItem.module.scss'
-import settings from '../../../../../../../../settings';
+import settings from '../../../../../../../../common/settings';
 
 const TaskItem = ({id, desk, image, imageExt, setTask}) => {
 

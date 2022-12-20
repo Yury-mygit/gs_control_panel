@@ -5,7 +5,7 @@ import PageList from './PageList/PageList';
 import Action from './Actions/Action';
 
 const Design = () => {   
-    const [currentPage, setCurrentPage] = useState(3)  
+    const [currentPage, setCurrentPage] = useState(1)  
     const [input, setInput] = useState(false)
 
     return (

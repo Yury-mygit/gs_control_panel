@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import settings from "../settings";
+import settings from "../common/settings";
 
 export const pageApi = createApi({
     reducerPath: 'pageApi',

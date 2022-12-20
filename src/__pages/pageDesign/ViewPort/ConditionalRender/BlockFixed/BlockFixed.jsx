@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import settings from '../../../../../settings';
+import settings from '../../../../../common/settings';
 import cl from "./BlockFixed.module.scss"
 
 const BlockFixed = ({data}) => {
