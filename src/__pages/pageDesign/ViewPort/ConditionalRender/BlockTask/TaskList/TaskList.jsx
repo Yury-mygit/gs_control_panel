@@ -7,6 +7,8 @@ import { createElement } from 'react';
   
                     
 const TaskList = ({data, setTaskModal, editTaskModalShow , setEditTaskModalShow}) => {
+
+    // console.log(data)
     return (
         <div className={cl.wrapper}>
             {data.map((i)=>{

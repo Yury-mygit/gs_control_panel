@@ -1,14 +1,20 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import settings from '../../../../../../../common/settings';
 import { VscFolderOpened } from "react-icons/vsc";
 import cl from './Image.module.scss'
 
-const Image = ({id=-1, img_url, imgext_url}) => {
+const Image = ({id=-1, img_url, imgext_url, uploaded, setUploaded, filePiker, setPrev}) => {
 
-    const filePiker = useRef(null)
-    const [uploaded, setUploaded] = useState(null)
+    // console.log(id, img_url, imgext_url, uploaded)
+
+    
     const [img, setImg] = useState(null)
 
+    const handlePick = (img) => {
+        
+        setPrev(img)
+        filePiker.current.click();
+    }
 
     const handleChange = (e) => {
         handleUpload(e.target.files[0])
@@ -24,45 +30,26 @@ const Image = ({id=-1, img_url, imgext_url}) => {
             method:'POST',
             body:formData,
         })
-        const data = await res.json();
-
-        setUploaded(data)
+        const ansver = await res.json();
+        
+        setUploaded({status:1, id:ansver.id})
+        // console.log('After ----',uploaded)
     }
 
-    const handlePick = () => {
-        filePiker.current.click();
-    }
+
     
-    
-    
+    // imageServer:'http://factory/api/staging/',
+    // console.log(id >= 0, uploaded.status==-1)
     useEffect(()=>{
-        // console.log('Зашли в useEfect')
-        if (id >= 0 && uploaded==null) 
-        {
-            setImg ( `url(${settings.imageServer}image/${img_url})` ) 
-            // console.log('Condition 1::',img, uploaded)
-        }
-            
-        if (id < 0 && !uploaded) 
-        {
-            
-            setImg ( `url(${settings.plug})` )
-            // console.log('Condition 2::',img, uploaded)
-        }
-        
-    
-        if (uploaded) 
-        {
-            
-            setImg ( `url(${settings.imageServer}file/get/${uploaded.id})` )
-            // console.log('Condition 3::',img, uploaded)
-        }
-        
-       
+        if (id >= 0 && uploaded.status==-1) setImg ( `url(${settings.imageServer}image/${img_url})` )     
+        if (id < 0 && uploaded.status==-1) setImg ( `url(${settings.plug})` )
+        if (uploaded.status!=-1)  setImg ( `url(${settings.imageServer}image/${uploaded.id})` )
+      
     },[uploaded])
 
+    // console.log(img, id , uploaded)
     
-    // console.log('Before return',img, uploaded)
+    // console.log('Before return', uploaded)
     return (
 
         <div className={cl.wrapper}>
@@ -75,16 +62,7 @@ const Image = ({id=-1, img_url, imgext_url}) => {
                 >
                 <VscFolderOpened 
                     className={cl.icon}
-                    onClick={handlePick}
-                />
-                
-                
-
-                <input type="file" 
-                    onChange={handleChange}
-                    ref={filePiker}
-                    className={cl.hidden}
-                    accept='image/*,.png,.jpg,.jpeg,.gif,.web'
+                    onClick={()=>handlePick(img_url)}
                 />
                 </div>
             </div>
@@ -104,9 +82,16 @@ const Image = ({id=-1, img_url, imgext_url}) => {
                 >
                 <VscFolderOpened 
                     className={cl.icon}
+                    onClick={()=>handlePick(imgext_url)}
                 />
                 </div>
             </div>  
+            <input type="file" 
+                    onChange={handleChange}
+                    ref={filePiker}
+                    className={cl.hidden}
+                    accept='image/*,.png,.jpg,.jpeg,.gif,.web'
+                />
         </div>
     );
 };

@@ -12,7 +12,7 @@ const BlockFixed = ({data}) => {
     let back = `url(${settings.imageServer}image/${data.fon})`
 
 
-    // console.log(data)          
+    console.log(data)          
     
 
    

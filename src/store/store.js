@@ -5,6 +5,7 @@ import userSlice from './userSlice'
 
 import { pageApi } from '../API/pageAPI' 
 import { newsApi } from '../API/newsAPI'
+import { tasksApi } from '../API/tasksAPI'
 
 export const store = configureStore({
   reducer: {
@@ -13,6 +14,7 @@ export const store = configureStore({
     user: userSlice,
     [pageApi.reducerPath]:pageApi.reducer,
     [newsApi.reducerPath]:newsApi.reducer,
+    [tasksApi.reducerPath]:tasksApi.reducer,
   },
 
   middleware: (getDefaultMiddleware) =>
@@ -20,6 +22,7 @@ export const store = configureStore({
   ([
     pageApi.middleware,
     newsApi.middleware,
+    tasksApi.middleware,
     
     
   ]),

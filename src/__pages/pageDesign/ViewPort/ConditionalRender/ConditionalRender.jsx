@@ -16,7 +16,7 @@ import BlockNewsList from './BlockNews/BlockNews';
 const ConditionalRender = ({type, block_type, data}) => {
 
  let block
-    console.log(block_type)
+    // console.log(block_type)
 //  let a = <div>sdfsds</div>
 
 // if (block_type) {

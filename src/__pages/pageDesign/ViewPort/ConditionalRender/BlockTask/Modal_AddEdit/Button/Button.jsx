@@ -1,16 +1,17 @@
 import React from 'react';
 import cl from './Button.module.scss'
 
-const Button = ({id=0}) => {
+const Button = ({id=-1, uploaded, setUploaded, save}) => {
+
     return (
         <div className={cl.buttonBlock}>
             {
                 id >= 0 
                     ?   <button
-                            onClick={()=>alert('Редактировать')}
+                            onClick={save}
                         > Сохранить </button>
                     :   <button
-                            onClick={()=>alert('Создать')}
+                            onClick={save}
                         > Создать </button>
             }
         </div>
