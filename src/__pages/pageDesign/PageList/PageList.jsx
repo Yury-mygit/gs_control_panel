@@ -1,7 +1,7 @@
 import React, {useState, useRef} from 'react';
 import { useGetPageDataQuery } from '../../../API/pageAPI';
 import Preview from './preview/Preview';
-import cl from './style.module.scss'
+import cl from './PageList.module.scss'
 
 const PageList = ({currentPage, setCurrentPage}) => {
 

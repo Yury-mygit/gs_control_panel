@@ -18,11 +18,14 @@ const ViewPort = ({ currentPage, input, setInput }) => {
     // console.log(data)
 
     return (
-        <div className={cl.viewPort}>
+        <div className={cl.wrapper}>
+            
             {data.structural_blocks.map((i)=>{
                 return(
                 <div className={cl.viewBlock} key={i.id}>
-                    {input ? <AddLine /> : ''}
+                    <AddLine 
+                        input = {input}
+                    />
                     <Deskription 
                         type={i.type}
                         data={i.data}

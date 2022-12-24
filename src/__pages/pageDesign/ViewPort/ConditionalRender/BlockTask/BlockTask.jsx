@@ -19,7 +19,7 @@ const BlockTask = () => {
     const [editTaskModalShow, setEditTaskModalShow] = 
             useState({show: false, new: false, id: -1})
 
-    useEffect(()=>{console.log(editTaskModalShow)},[editTaskModalShow])
+    // useEffect(()=>{console.log(editTaskModalShow)},[editTaskModalShow])
 
     
     if (isLoading) return <div>Loading ...</div>

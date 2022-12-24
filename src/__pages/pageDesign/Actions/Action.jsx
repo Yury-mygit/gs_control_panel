@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import cl from './style.module.scss'
+import cl from './Action.module.scss'
 import Block from './Block/Block'
 
 

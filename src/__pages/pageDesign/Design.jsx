@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
-import cl from './style.module.scss'
+import cl from './Design.module.scss'
 import ViewPort from './ViewPort/ViewPort';
 import PageList from './PageList/PageList';
 import Action from './Actions/Action';
 
+
 const Design = () => {   
-    const [currentPage, setCurrentPage] = useState(1)  
+    const [currentPage, setCurrentPage] = useState(2)  
     const [input, setInput] = useState(false)
 
     return (

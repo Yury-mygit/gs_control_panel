@@ -13,6 +13,11 @@ const settings = {
     tasksServer: 'http://factory/api/staging/',  
             
     plug
+
+
+    
 }
+
+
 
 export default settings

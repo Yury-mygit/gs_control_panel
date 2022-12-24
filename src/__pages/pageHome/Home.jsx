@@ -1,16 +1,10 @@
 import React from 'react';
 import cl from './Home.module.scss'
-
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, useRef } from 'react';
-
 import { useGetPageDataQuery } from '../../API/pageAPI';
-
-import PagesList from './components/PagesList';
-
-
-
-// console.log('move = ', parseInt(cl.move))
+import ProjectStructure from './ProjectStructure/ProjectStructure';
+import Summary from './PaySummary/Summary';
 
 const Home = () => {
     let [userName, setUserName] = useState('')
@@ -23,26 +17,19 @@ const Home = () => {
 
     const { data, isError, isLoading, isFetching } = useGetPageDataQuery (10001)
 
-    // console.log(data)
-    // console.log(isError)
-    if (!isLoading && !isError)
-    { return (
-        <div className={cl.content}>
+    if (isLoading) return <div className={cl.wrapper}>Loading...</div>;
+    if (isError) return <div className={cl.wrapper}>Ошибка загрузка</div>;
 
-            
-            <div className={cl.structure}>
-                Структура проекта
-                <PagesList data={data}/>
-            </div>
-            <div className={cl.summary}>
-                Сводная по оплате
-            </div>
-            
-        
+    
+   
+    return (
+        <div className={cl.wrapper}>      
+            <div className={cl.content}>
+                <ProjectStructure  data={data}/>
+                <Summary />            
+            </div>     
         </div>      
-    )}
-    if (isLoading && !isError) return <div className={cl.content}>Loading...</div>;
-    if (!isLoading && isError) return <div className={cl.content}>Ошибка загрузка</div>;
+    )
 };
 
 export default Home;

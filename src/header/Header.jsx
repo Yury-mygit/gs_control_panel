@@ -25,6 +25,9 @@ const Header = () => {
                 <div className={cl.item}>
                     <Link to="/design">Дезаин</Link>
                 </div>
+                <div className={cl.item}>
+                    <Link to="/lesson">Уроки</Link>
+                </div>
                
                 <div className={cl.item}>
                     <Link to="/timetable">Расписание</Link>

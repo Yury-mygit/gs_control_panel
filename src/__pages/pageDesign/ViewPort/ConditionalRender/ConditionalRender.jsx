@@ -1,5 +1,6 @@
 import React from 'react';
 
+import BlockAbout from './BlockAbout/BlockAbout';
 import BlockFixed from './BlockFixed/BlockFixed';
 import BlockFotoText from './BlockFotoText/BlockFotoText';
 import BlockBenefits from './BlockBenefits/BlockBenefits';
@@ -30,6 +31,7 @@ const ConditionalRender = ({type, block_type, data}) => {
 
  
  switch (type) {
+    case 'about':     block = <BlockAbout  data={data} />; break;
     case 'face':      block = <BlockFixed  data={data} />; break;
     case 'content':   block = <BlockFotoText   data={data}/>; break;
     case 'benefit':   block = <BlockBenefits data={data}/>; break;

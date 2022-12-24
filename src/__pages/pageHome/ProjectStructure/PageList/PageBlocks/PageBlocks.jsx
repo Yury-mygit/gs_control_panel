@@ -8,6 +8,7 @@ const PageBlocks = ({blocks}) => {
 
     return (
         <div className={cl.wrapper}>
+            
             {blocks.map(i=>{
                 return(
                    <div 

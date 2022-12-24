@@ -11,9 +11,10 @@ import {
 import ErrorPage from './__pages/ErrorPage';
 import Root from './router/Root';
 import AuthLayout from './__pages/pageAuth/AuthLayout';
-import Login from './__pages/pageAuth/Login';
-import Home from './__pages/pageHome/Home';
+import Login from  './__pages/pageAuth/Login';
+import Home from   './__pages/pageHome/Home';
 import Design from './__pages/pageDesign/Design'
+import Lesson from './__pages/pageLesson/LessonPage'
 import CMS from './__pages/pageCMS/CMS'
 import { useSelector, useDispatch } from 'react-redux';
 import PageLogin from './__pages/pageLogin/PageLogin';
@@ -87,6 +88,12 @@ const router = createBrowserRouter(
         <Route
           path="design"
           element={<Design />}
+          // loader={contactLoader}
+          // action={contactAction}
+        />
+        <Route
+          path="lesson"
+          element={<Lesson />}
           // loader={contactLoader}
           // action={contactAction}
         />
