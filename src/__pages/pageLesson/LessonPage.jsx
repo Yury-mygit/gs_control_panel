@@ -4,11 +4,8 @@ import LastWork from './LastWork/LastWork';
 import cl from './LessonPage.module.scss'
 import Title from './Title/Title';
 import settings from '../../common/settings';
-
-// let save 
-let draw = false
-  let cx
-  let cy 
+ 
+  
   
 const LessonPage = () => {
 
@@ -19,12 +16,12 @@ const LessonPage = () => {
   const [topText, setTopText] = useState('')
   const [bottomText, setBottomText] = useState('')
 
-
   const [save, setSave] = useState(null)
-  // const [ctxS, setctxS] = useState(null)
   const [coordinate, setCoordinate] = useState({x:0,y:0})
+  const [lineStartCoordinate, setLineStartCoordinate] = useState({x:0,y:0})
+  const [drawingNow, setDrawingNow] = useState(false)
 
-
+  const [needCheck, setNeedCheck] = useState(false)
 
   const mouseObserver = (e) => { 
     setCoordinate({x:e.offsetX,y:e.offsetY})
@@ -32,59 +29,66 @@ const LessonPage = () => {
 
   const mouseDown =  (e) => {
     setSave(canvas.current.toDataURL()) 
-    // save = canvas.current.toDataURL()
-    console.log('mouseDown')
-    cx = e.offsetX
-    cy = e.offsetY
-    draw = true
+    setLineStartCoordinate({x:e.offsetX,y:e.offsetY})
+    setDrawingNow(true)
+    setNeedCheck(true)
+
   }
   const mouseUp = (e) => { 
-    draw = false
-    console.log('mouseUp')
+    setDrawingNow(false)
   }
 
   useEffect(()=>{
-    if (draw) {
-
-      console.log(
-        Math.abs(coordinate.x-cx) , 
-        Math.abs((coordinate.y-cy)),
-        Math.abs(coordinate.x-cx)>0 || Math.abs((coordinate.y-cy)>0),
-        '#',
-        "cx=",
-        cx,
-        '|',
-        "cy=",
-        cy,
-        '|',
-        coordinate.x,
-        coordinate.y,
-      )
-
-      let a = Math.abs(cx-coordinate.x)
-      let b = Math.abs(cy-coordinate.y)
-
-      if(a<2 && b<2){
-      
-      }else{
-          const img = new Image()
-          img.src = save;
-          let c = canvas.current.getContext("2d")
-
-          img.onload = () => {
-            c.clearRect(0,0,     400, 400)          
-            c.beginPath()
-            c.moveTo(cx, cy)
-            c.drawImage(img, 0,0,400, 400)
-            c.lineTo(coordinate.x,coordinate.y)
-            c.stroke()
-            c.closePath();
-            console.log('выполнено')
-          }
-          
-        }     
+    if (drawingNow && ( Math.abs(lineStartCoordinate.x-coordinate.x)<2 || Math.abs(lineStartCoordinate.y-coordinate.y) )) {
+      drawingNowHandler(save,canvas,lineStartCoordinate,coordinate) 
     }    
   },[coordinate])
+
+
+  useEffect(()=>{
+
+    if (!drawingNow && needCheck)
+    console.log(
+      lineStartCoordinate,coordinate,needCheck
+    )
+
+    if(
+      lineStartCoordinate.x >=20 && lineStartCoordinate.x <=120 &&
+      lineStartCoordinate.y >=20 && lineStartCoordinate.y <=120 &&
+      coordinate.x >=200 && coordinate.x <=300 &&
+      coordinate.y >=200 && coordinate.y <=300 
+    ){
+        console.log('sdsdd')
+
+        let ctx = canvas.current.getContext("2d")
+        ctx.beginPath()
+        ctx.rect(20, 20, 100, 100);
+        ctx.strokeStyle = "green"
+        ctx.lineWidth = 5;
+        ctx.stroke();
+        ctx.closePath()
+    }
+
+
+    if(
+      lineStartCoordinate.x >=20 && lineStartCoordinate.x <=120 &&
+      lineStartCoordinate.y >=20 && lineStartCoordinate.y <=120 &&
+      coordinate.x >=20 && coordinate.x <=120 &&
+      coordinate.y >=200 && coordinate.y <=300 
+    ){
+        console.log('sdsdd')
+
+        let ctx = canvas.current.getContext("2d")
+        ctx.beginPath()
+        ctx.rect(20, 20, 100, 100);
+        ctx.strokeStyle = "green"
+        ctx.lineWidth = 5;
+        ctx.stroke();
+        ctx.closePath()
+    }
+
+
+  },[drawingNow])
 
 
   useEffect(()=>{
@@ -97,15 +101,37 @@ const LessonPage = () => {
     const tempImage = new Image();
     tempImage.src = `${settings.imageServer}image/10`
     tempImage.crossOrigin='anonymous'
-    tempImage.onload = () => setImage(tempImage)
-    console.log('sdsds')
+
+
+    const tempImage1 = new Image();
+    tempImage1.src = `${settings.imageServer}image/11`
+    tempImage1.crossOrigin='anonymous'
+
+    const tempImage2 = new Image();
+    tempImage2.src = `${settings.imageServer}image/13`
+    tempImage2.crossOrigin='anonymous'
+
+    let arr = []
+
+    arr.push(tempImage,tempImage1,tempImage2)
+
+    tempImage.onload = () => setImageArr(arr)
+    // tempImage1.onload = () => setImageArr([...imageArr, tempImage1,])
+    // tempImage2.onload = () => setImageArr([...imageArr, tempImage2])
   }, [])
 
+
+
+  
   useEffect(() => {
-    if(image && canvas) {
+    console.log(imageArr)
+    if(imageArr.length==3 && canvas) {
       let ctx = canvas.current.getContext("2d")
       ctx.fillStyle = "black"
-      ctx.drawImage(image, 20, 20, 300, 300)
+      
+      ctx.drawImage(imageArr[0], 20, 20, 100, 100)
+      ctx.drawImage(imageArr[1], 200, 200, 100, 100)
+      ctx.drawImage(imageArr[2], 20, 200, 100, 100)
 
       ctx.font = "20px Comic Sans MS"
       ctx.fillStyle = "white"
@@ -114,7 +140,7 @@ const LessonPage = () => {
       ctx.fillText(topText, (400 / 2), 25)
       ctx.fillText(bottomText, (400 / 2), 256 + 40 + 25)
     }
-  }, [image, canvas, topText, bottomText])
+  }, [imageArr, canvas, topText, bottomText])
   
 
     
@@ -204,6 +230,25 @@ const LessonPage = () => {
 };
 
 export default LessonPage;
+
+
+const drawingNowHandler = (save,canvas,lineStartCoordinate,coordinate) =>{
+  const img = new Image()
+  img.src = save;
+  let c = canvas.current.getContext("2d")
+
+  img.onload = () => {
+    c.clearRect(0,0,     400, 400)          
+    c.beginPath()
+    c.moveTo(lineStartCoordinate.x,lineStartCoordinate.y)
+    c.drawImage(img, 0,0,400, 400)
+    c.lineTo(coordinate.x,coordinate.y)
+    c.stroke()
+    c.closePath();
+}}
+
+
+
 
 /*
 Entrys
