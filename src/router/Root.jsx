@@ -9,6 +9,7 @@ import Footer from '../footer/Footer';
 import { logIn } from '../store/userSlice';
 
 import cl from './Root.module.scss'
+import MainMenu from '../MainMenu/MainMenu';
 
 const Root = () => {
 
@@ -22,8 +23,12 @@ const Root = () => {
 
   return (
     <div className={cl.wrapper}>
-      <Header/>   
-      <Outlet/>
+      <Header/>  
+      <div className={cl.content}> 
+        <MainMenu />   
+        <Outlet/>
+        
+      </div>
       <Footer/>
     </div>
   );

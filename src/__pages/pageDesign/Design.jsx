@@ -6,7 +6,7 @@ import Action from './Actions/Action';
 
 
 const Design = () => {   
-    const [currentPage, setCurrentPage] = useState(2)  
+    const [currentPage, setCurrentPage] = useState(0)  
     const [input, setInput] = useState(false)
 
     return (

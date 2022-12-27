@@ -1,0 +1,28 @@
+.wrapper{
+    display: flex;
+    flex-direction: column;
+    width: 130px;
+    // overflow: hidden;
+    // border: 1px solid red;
+    border-right: 5px solid black;
+    // position: fixed;
+
+
+    .item{
+            
+            box-shadow: 4px 2px 2px gray;
+            padding: 5px 30px 5px 30px;
+            margin: 2px 5px 10px 5px;
+            border-radius: 5px;
+            background: rgba(220, 220, 220, 0.8);
+            // width: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            a{
+                text-decoration: none;
+                color: rgb(228, 18, 18);
+            }
+        }
+}

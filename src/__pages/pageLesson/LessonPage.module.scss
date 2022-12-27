@@ -11,7 +11,28 @@
     .content{
         width: 100%;
         display:flex;
+        flex-direction: column;
+        flex-grow: 1;
+        justify-content: flex-start;
+        align-items: center;
+        position: relative;
 
-        justify-content: space-around
+        .block{
+            position: relative;
+        }
+        .canva{
+            border: 1px solid green;
+            position: absolute;
+            top: 0px;
+            z-index: 40;
+        }
+        .screen{
+            z-index: 30;
+            border: 1px solid blue;
+        }
+
+        .view{
+
+        }
     }
 };

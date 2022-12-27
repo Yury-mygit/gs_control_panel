@@ -10,39 +10,17 @@ const Header = () => {
     const user = useSelector((state) => state.user.user)
     const loggedIn = useSelector((state) => state.user.loggedIn)
     const dispatch = useDispatch()
-  
-    
-   
-
+ 
     if (loggedIn)
     return (
         <div className={cl.wrapper}>
-        <div className={cl.content}>
-            <div className={cl.buttons}>
-                <div className={cl.item}>
-                    <Link to="/">Главная</Link>
-                </div>
-                <div className={cl.item}>
-                    <Link to="/design">Дезаин</Link>
-                </div>
-                <div className={cl.item}>
-                    <Link to="/lesson">Уроки</Link>
-                </div>
-               
-                <div className={cl.item}>
-                    <Link to="/timetable">Расписание</Link>
-                </div>
-                <div className={cl.item}>
-                    <Link to="/cms">CMS</Link>
-                </div>
-            
+            <div className={cl.content}>
+                <div>Hello Admin</div>
+                <button  
+                    className={cl.item}
+                    onClick={()=>{dispatch(logOut())}}
+                >  {user}</button>
             </div>
-            
-            <button  
-                 className={cl.item}
-                 onClick={()=>{dispatch(logOut())}}
-            >  {user}</button>
-        </div>
         </div>
     );
     else
@@ -61,3 +39,24 @@ const Header = () => {
 };
 
 export default Header;
+
+
+{/* <div className={cl.buttons}>
+                <div className={cl.item}>
+                    <Link to="/">Главная</Link>
+                </div>
+                <div className={cl.item}>
+                    <Link to="/design">Дизайн</Link>
+                </div>
+                <div className={cl.item}>
+                    <Link to="/lesson">Уроки</Link>
+                </div>
+               
+                <div className={cl.item}>
+                    <Link to="/timetable">Расписание</Link>
+                </div>
+                <div className={cl.item}>
+                    <Link to="/cms">CMS</Link>
+                </div>
+            
+            </div> */}

@@ -12,8 +12,8 @@ const BlockAbout = ({data}) => {
         <div className={cl.wrapper} style={{backgroundImage: back}}>
               <div className={cl.content} >
 
-                <h3>{data.title}</h3>
-                <div>{data.motto}</div>
+                <h2>{data.title}</h2>
+                <h2>{data.motto}</h2>
                 <div>{data.text}</div>
                  
               </div>

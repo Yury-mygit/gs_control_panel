@@ -21,7 +21,7 @@ import PageLogin from './__pages/pageLogin/PageLogin';
 import { useEffect } from 'react';
 import {logIn} from './store/userSlice'
 import Timetable from './__pages/timetable/Timetable';
-
+import Materials from './__pages/pageMaterials/PageMaterials'
 
 
 function App() {
@@ -44,6 +44,7 @@ function App() {
     }
   },[])
  
+
 const NavToMain = () =>{
 
   const navigate = useNavigate();
@@ -56,8 +57,6 @@ const NavToMain = () =>{
   )
 }
 
-
-
 const unloggedrouter = createBrowserRouter(
   createRoutesFromElements(
     <Route
@@ -66,6 +65,7 @@ const unloggedrouter = createBrowserRouter(
       // loader={rootLoader}
       // action={rootAction}
       errorElement={<NavToMain />}
+      // errorElement={<Error />}
     >
       <Route index element={<PageLogin />} />
      
@@ -83,7 +83,8 @@ const router = createBrowserRouter(
     >
       {/* <Route index element={<Home />} /> */}
       {/* <Route index element={<CMS />} /> */}
-      <Route index element={<Design />} />
+      {/* <Route index element={<Design />} /> */}
+      <Route index element={<Lesson />} />
       <Route errorElement={<ErrorPage />}>
         <Route
           path="design"
@@ -92,10 +93,14 @@ const router = createBrowserRouter(
           // action={contactAction}
         />
         <Route
-          path="lesson"
+          path="lessons"
           element={<Lesson />}
           // loader={contactLoader}
           // action={contactAction}
+        />
+        <Route
+          path="Materials"
+          element={<Materials />}
         />
 
         <Route
