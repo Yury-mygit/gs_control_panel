@@ -5,7 +5,7 @@ import cl from './LessonPage.module.scss'
 import Title from './Title/Title';
 import settings from '../../common/settings';
  
-  
+let photo = [12,13,14]
   
 const LessonPage = () => {
 
@@ -90,70 +90,137 @@ const LessonPage = () => {
 
   },[drawingNow])
 
-
+  // 
   useEffect(()=>{
     canvas.current.onmousemove = mouseObserver
     canvas.current.onmousedown = mouseDown
     canvas.current.onmouseup = mouseUp
   },[])
 
-  useEffect(() => {
-    const tempImage = new Image();
-    tempImage.src = `${settings.imageServer}image/10`
-    tempImage.crossOrigin='anonymous'
 
 
-    const tempImage1 = new Image();
-    tempImage1.src = `${settings.imageServer}image/11`
-    tempImage1.crossOrigin='anonymous'
 
-    const tempImage2 = new Image();
-    tempImage2.src = `${settings.imageServer}image/13`
-    tempImage2.crossOrigin='anonymous'
+  // useEffect(() => {
+  //   const tempImage = new Image();
+  //   tempImage.src = `${settings.imageServer}image/10`
+  //   tempImage.crossOrigin='anonymous'
 
-    let arr = []
 
-    arr.push(tempImage,tempImage1,tempImage2)
+  //   const tempImage1 = new Image();
+  //   tempImage1.src = `${settings.imageServer}image/11`
+  //   tempImage1.crossOrigin='anonymous'
 
-    tempImage.onload = () => setImageArr(arr)
-    // tempImage1.onload = () => setImageArr([...imageArr, tempImage1,])
-    // tempImage2.onload = () => setImageArr([...imageArr, tempImage2])
-  }, [])
+  //   const tempImage2 = new Image();
+  //   tempImage2.src = `${settings.imageServer}image/13`
+  //   tempImage2.crossOrigin='anonymous'
+
+  //   let arr = []
+
+  //   arr.push(tempImage,tempImage1,tempImage2)
+
+  //   tempImage.onload = () => setImageArr(arr)
+  //   // tempImage1.onload = () => setImageArr([...imageArr, tempImage1,])
+  //   // tempImage2.onload = () => setImageArr([...imageArr, tempImage2])
+  // }, [])
+
+useEffect(()=>{
+  var imageURLs=[];  
+  imageURLs.push(`${settings.imageServer}image/11`);
+  imageURLs.push(`${settings.imageServer}image/13`);
+  imageURLs.push(`${settings.imageServer}image/14`);
+  imageURLs.push(`${settings.imageServer}image/14`);
+  
+  // the loaded images will be placed in imgs[]
+  var imgs=[];
+  
+  var imagesOK=0;
+  loadAllImages(start);
+  
+  function loadAllImages(callback){
+      for (var i=0; i<imageURLs.length; i++) {
+          var img = new Image();
+          imgs.push(img);
+          img.onload = function(){ 
+              imagesOK++; 
+              if (imagesOK>=imageURLs.length ) {
+                  callback();
+              }
+          };
+          img.onerror=function(){ } 
+          img.crossOrigin="anonymous";
+          img.src = imageURLs[i];
+      }      
+  }
+  
+  function start(){
+  
+      // the imgs[] array now holds fully loaded images
+      // the imgs[] are in the same order as imageURLs[]
+      setImageArr(imgs)
+  }
+
+},[])
+ // put the paths to your images in imageURLs[]
+
+
 
 
 
   
+
+  
+
   useEffect(() => {
     console.log(imageArr)
-    if(imageArr.length==3 && canvas) {
+    if(imageArr.length>0 && canvas) {
       let ctx = canvas.current.getContext("2d")
       ctx.fillStyle = "black"
       
-      ctx.drawImage(imageArr[0], 20, 20, 100, 100)
-      ctx.drawImage(imageArr[1], 200, 200, 100, 100)
-      ctx.drawImage(imageArr[2], 20, 200, 100, 100)
+      imageArr.map((i,ind)=>{
+        ctx.drawImage(i, 20+100*ind, 20, 100, 100)
+      })
+      
+      // ctx.drawImage(imageArr[1], 200, 200, 100, 100)
+      // ctx.drawImage(imageArr[2], 20, 200, 100, 100)
 
       ctx.font = "20px Comic Sans MS"
       ctx.fillStyle = "white"
       ctx.textAlign = "center"
 
-      ctx.fillText(topText, (400 / 2), 25)
-      ctx.fillText(bottomText, (400 / 2), 256 + 40 + 25)
+      // ctx.fillText(topText, (400 / 2), 25)
+      // ctx.fillText(bottomText, (400 / 2), 256 + 40 + 25)
     }
-  }, [imageArr, canvas, topText, bottomText])
-  
+  }, [imageArr])  
 
-    
+
+
 
   const test = () => {
-    // // console.log(s)
+    console.log(arr)
     // ctxS.fillRect(180, 150, 200, 200);
     // const img = new Image();
     // const imgs = new Image();
     // img.src = `${settings.imageServer}image/${imageArr.length+17}`
     // img.crossOrigin='anonymous'
     // img.onload = () => setImageArr([...imageArr, img])
-    
+    if(imageArr.length>0 && canvas) {
+      let ctx = canvas.current.getContext("2d")
+      ctx.fillStyle = "black"
+      
+      imageArr.map((i,ind)=>{
+        ctx.drawImage(imageArr[0], 20+100*ind, 20, 100, 100)
+      })
+      
+      // ctx.drawImage(imageArr[1], 200, 200, 100, 100)
+      // ctx.drawImage(imageArr[2], 20, 200, 100, 100)
+
+      ctx.font = "20px Comic Sans MS"
+      ctx.fillStyle = "white"
+      ctx.textAlign = "center"
+
+      // ctx.fillText(topText, (400 / 2), 25)
+      // ctx.fillText(bottomText, (400 / 2), 256 + 40 + 25)
+    }
     }
 
   // const clickHandler = (e) => {
