@@ -18,21 +18,12 @@
         position: relative;
 
         .block{
-            position: relative;
+            // position: relative;
+            width: 100%;
         }
-        .canva{
-            border: 1px solid green;
-            position: absolute;
-            top: 0px;
-            z-index: 40;
-        }
-        .screen{
-            z-index: 30;
-            border: 1px solid blue;
-        }
+       
+       
 
-        .view{
-
-        }
+       
     }
 };
